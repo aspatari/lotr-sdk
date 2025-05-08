@@ -351,11 +351,6 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 uv pip install -e ".[dev]"
 ```
 
-### Running Tests
-
-```bash
-pytest
-```
 
 ## License
 
