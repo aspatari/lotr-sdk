@@ -13,8 +13,6 @@ Both examples perform the same task:
 - Count quotes containing numeric characters
 - Display statistics about quotes per movie
 
-The examples are designed to demonstrate the performance difference between synchronous and asynchronous approaches.
-
 ## Installation and Setup
 
 ### 1. Install uv
@@ -55,7 +53,12 @@ source .venv/bin/activate  # macOS/Linux
 uv sync
 ```
 
-The examples already include a sample API key (`qQg8z34W2l1bV1I1jGr_`).
+### 5. Get an API Key
+
+You'll need an API key from [The One API](https://the-one-api.dev/). 
+1. Sign up for a free account
+2. Copy your API key
+3. Replace `YOUR_API_KEY` in the example files with your actual key
 
 ## Running the Examples
 
@@ -75,19 +78,9 @@ uv run examples/async_example.py
 
 ### 3. Compare the results
 
-After running both examples, compare the execution times displayed at the end of each run:
+After running both examples, compare the execution times displayed at the end of each run. The asynchronous version should run faster because it fetches quotes for different movies concurrently.
 
-```
-# Example output - Synchronous version
-⏱️ Total execution time: 3.15 seconds
-
-# Example output - Asynchronous version
-⏱️ Total execution time: 2.16 seconds
-```
-
-The asynchronous version runs significantly faster because it fetches quotes for different movies concurrently.
-
-## Results
+## Expected Output
 
 Both examples will produce similar output, showing:
 - A list of movies and their quotes
@@ -95,18 +88,6 @@ Both examples will produce similar output, showing:
 - A sorted list of movies by the number of quotes containing numbers
 - The total execution time
 
-The key difference is in performance:
-- **Synchronous**: ~3.15 seconds for processing all movies sequentially
-- **Asynchronous**: ~2.16 seconds for processing all movies concurrently
-
-This performance improvement would be even more significant with more movies or when dealing with slower networks.
-
 ## Notes on Python Version
 
-This SDK requires Python 3.13 or later. Make sure you're using the correct Python version when creating your virtual environment.
-
-## Notes on Performance
-
-- The asynchronous example is faster because it processes all movies concurrently.
-- For small datasets, the difference might be minimal, but it becomes significant with larger datasets.
-- The bottleneck in these examples is primarily network I/O, which is exactly where async processing shines. 
+This SDK requires Python 3.13 or later. Make sure you're using the correct Python version when creating your virtual environment. 

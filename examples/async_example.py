@@ -17,7 +17,7 @@ async def main():
     start_time = time.time()
 
     # Initialize the SDK with your API key
-    settings = Settings(api_key="qQg8z34W2l1bV1I1jGr_")
+    settings = Settings(api_key="YOUR_API_KEY")  # Replace with your API key from The One API
     client = LotrAPI(settings=settings)
 
     print("🧙 Lord of the Rings SDK - Asynchronous Example")
