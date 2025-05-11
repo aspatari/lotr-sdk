@@ -351,6 +351,73 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 uv pip install -e ".[dev]"
 ```
 
+### Running Tests
+
+The SDK includes a comprehensive test suite to ensure its reliability. The tests include both unit tests for individual components and integration tests for API interactions.
+
+#### Prerequisites
+
+Before running the tests, make sure you have installed the development dependencies:
+
+```bash
+uv pip install -e ".[dev]"
+```
+
+#### Running all tests
+
+```bash
+# Run all tests (except real API tests)
+pytest
+
+# Run with coverage report
+pytest --cov=lotr_sdk
+```
+
+#### Running specific test categories
+
+```bash
+# Run only unit tests
+pytest tests/unit/
+
+# Run only integration tests with mocked responses
+pytest tests/integration/
+
+# Run a specific test file
+pytest tests/unit/test_movie_service.py
+
+# Run a specific test function
+pytest tests/unit/test_movie_service.py::test_list_movies
+
+# Run tests that call the real API (requires API key)
+pytest tests/integration/test_real_api.py --run-real-api
+```
+
+#### Using the test script
+
+You can also use the included shell script to run tests:
+
+```bash
+# Make it executable (if not already)
+chmod +x tests/run_tests.sh
+
+# Run tests
+./tests/run_tests.sh
+```
+
+#### Test Structure
+
+- **Unit Tests**: Test individual components in isolation with mocked dependencies
+  - `tests/unit/test_lotr.py`: Tests for the main LotrAPI class
+  - `tests/unit/test_movie_service.py`: Tests for the MovieService
+  - `tests/unit/test_quote_service.py`: Tests for the QuoteService
+  - `tests/unit/test_settings.py`: Tests for the Settings class
+  - `tests/unit/test_pagination.py`: Tests for the Pagination class
+  - `tests/unit/test_field_filter.py`: Tests for the FieldFilter class
+
+- **Integration Tests**: Test API interactions 
+  - `tests/integration/test_api_integration.py`: Tests with mocked HTTP responses
+  - `tests/integration/test_error_handling.py`: Tests for error handling
+  - `tests/integration/test_real_api.py`: Tests using the real API (requires API key and `--run-real-api` flag)
 
 ## License
 

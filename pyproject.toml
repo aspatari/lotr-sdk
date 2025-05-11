@@ -18,6 +18,7 @@ dev = [
     "pytest>=8.0.0",
     "pytest-asyncio>=0.23.5",
     "pytest-cov>=4.1.0",
+    "pytest-httpx>=0.29.0",   # Required for HTTP mocking in tests
     "ruff>=0.3.0",
     "mypy>=1.8.0",
 ]
@@ -67,3 +68,6 @@ asyncio_mode = "auto"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 addopts = "-ra -q --cov=lotr_sdk"
+markers = [
+    "real_api: marks tests that call the real API (deselect with '-m \"not real_api\"')",
+]
